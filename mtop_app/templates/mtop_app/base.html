@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Midas crypto</title>
+	<meta name="description" content="Midas is a blockchain protocol making leveraged trades generating passive income to liquidity providers. " />
+	<meta name="keywords" content="Midas, bitcoin, ethereum, usdt, passive income" />
+	<meta name="author" content="Midas"/>
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="{% static 'mtop_app/images/favicon.png' %}" />
+
+	<!-- Bootstrap & Plugins CSS -->
+	<link href="{% static 'mtop_app/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'mtop_app/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
+
+	<!-- Custom CSS -->
+	<link href="{% static 'mtop_app/css/dark.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'mtop_app/css/main.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="loading-wrapper">
+		<div class="loading">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<!-- ***** Header Area Start ***** -->
+	<header class="header-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 position-relative">
+					<nav class="main-nav">
+						<!-- ***** Logo Start ***** -->
+						<a href="{%	url 'mtop-home' %}" class="logo">
+							<img src="{% static 'mtop_app/images/logos/transparent-logo-green.svg' %}" class="light-logo" alt="Midas"/>
+							<img src="{% static 'mtop_app/images/logos/white-logo-green.svg' %}" class="dark-logo" alt="Midas"/>
+						</a>
+						<!-- ***** Logo End ***** -->
+
+
+
+						<!-- ***** Menu Start ***** -->
+						<ul class="nav">
+
+							{% if user.is_authenticated %}
+							<li><a href="{% url 'deposit' %}">DEPOSIT</a></li>
+							<li><a href="{% url 'profile' %}">PROFILE</a>
+							<li><a href="{% url 'mtop-home' %}#faq">FAQ</a></li>
+							<li><a href="{% url 'logout' %}">Log out</a></li>
+							{% else %}
+							<li><a href="green-block-explorer.html">BLOCKCHAIN HOME</a></li>
+							<li><a href="{% url 'mtop-home' %}#faq">FAQ</a></li>
+							<li><a href="{% url 'login' %}" class="btn-nav-box">SIGN UP</a></li>
+							{% endif %}
+
+						</ul>
+						<a class='menu-trigger'>
+							<span>Menu</span>
+						</a>
+						<!-- ***** Menu End ***** -->
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+		{% block content %}
+
+		{% endblock content %}
+
+
+
+
+<!-- jQuery -->
+	<script src="{% static 'mtop_app/js/jquery-3.6.0.min.js'%}"></script>
+
+	<!-- Bootstrap -->
+	<!--< script src="{% static 'mtop_app/js/popper.js' %}"></script>-->
+	<script src="{% static 'mtop_app/js/bootstrap.min.js' %}"></script>
+
+	<!-- Plugins -->
+	<script src="{% static 'mtop_app/js/particles.min.js' %}"></script>
+	<script src="{% static 'mtop_app/js/scrollreveal.min.js' %}"></script>
+	<script src="{% static 'mtop_app/js/jquery.downCount.js' %}"></script>
+	<script src="{% static 'mtop_app/js/parallax.min.js' %}"></script>
+
+	<!-- Global Init -->
+	<script src="{% static 'mtop_app/js/particle-dark.js' %}"></script>
+	<script src="{% static 'mtop_app/js/custom.js' %}"></script>
+	{% block content2 %}
+	{% endblock content2%}
+
+
+
+</body>
+
+</html>
+

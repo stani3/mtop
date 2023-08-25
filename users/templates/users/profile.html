@@ -1,0 +1,70 @@
+{% extends "mtop_app/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="block-explorer-wrapper bg-bottom-center" id="welcome-1">
+    <div class="block-explorer text">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-12 align-self-center">
+                    <h1>Profile page</h1>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <p><a href="{% url 'statistics' %}">Statistics</a></p>
+            <p><a href="{% url 'affiliate' %}">Affiliate</a></p>
+            <p><a href="{% url 'profile' %}">Edit profile</a></p>
+        </div>
+        <div class="col-sm-8">
+            <br>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Username </h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ profile.user }}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ profile.user.email }}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Balance </h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ profile.balance }} USDT
+                </div>
+            </div>
+
+            <hr>
+            <a class="btn btn-primary" href="{% url 'withdraw' %}" role="button">Withdraw funds</a>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

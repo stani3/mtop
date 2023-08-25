@@ -1,0 +1,29 @@
+{% extends "mtop_app/base2.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- partial:index.partial.html -->
+<div id="login-form-wrap">
+    <h2>Login</h2>
+    <form method="POST" id="login-form" action="{% url 'login' %}">
+        {% csrf_token %}
+        <p>
+            <input type="text" id="username" name="username" placeholder="Username" required><i
+                class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+
+            <input type="password" id="password" name="password" placeholder="password" required><i
+                class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+            <input type="submit" id="login" value="Login">
+        </p>
+    </form>
+    <div id="create-account-wrap">
+        <p>Not a member? <a href="{% url 'register-home' %}">Create Account</a>
+        <p>
+    </div><!--create-account-wrap-->
+</div><!--login-form-wrap-->
+<!-- partial -->
+{% endblock %}

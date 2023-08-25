@@ -1,0 +1,178 @@
+{% extends "mtop_app/base.html" %}
+
+
+{% block content%}
+
+
+<section class="block-explorer-wrapper bg-bottom-center" id="welcome-1">
+
+    <div class="block-explorer text">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-12 align-self-center">
+                    <h1>Deposit crypto earn interest</h1>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <div class="alert danger-alert">
+                            <h3>{{ message }}</h3>
+
+                        </div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- ***** Wellcome Area End ***** -->
+
+<section class="block-explorer-features section bg-bottom">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2"></div>
+              {% for plan in plans1 %}
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="card card-{{plan.id}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ plan.name }}</h5>
+                        <p class="card-text">  Minimum deposit {{ plan.minimum_deposit }} <br>
+                            Interest per day {{ plan.intrest }} %</p></p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col-lg-2 col-md-2 col-sm-2"></div>
+        </div>
+    </div><br>
+    <div class="container">
+        <div class="row">
+             <div class="col-lg-2 col-md-2 col-sm-2"></div>
+              {% for plan in plans2 %}
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="card card-{{plan.id}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ plan.name }}</h5>
+                        <p class="card-text">
+                            Minimum deposit {{ plan.minimum_deposit }} <br>
+                            Interest per day {{ plan.intrest }} %</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col-lg-2 col-md-2 col-sm-2"></div>
+        </div>
+    </div>
+</section>
+<!-- ***** FAQ Start -->
+<section class="section bg-top" id="faq">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="center-heading">
+                    <h1 class="section-title">FAQ</h1>
+                </div>
+            </div>
+            <div class="offset-lg-3 col-lg-6">
+                <div class="center-text">
+                    <p>Frequently asked questions for Midas protocol</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="accordion" id="accordionExample">
+                      {% for question in questions %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-{{forloop.counter}}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-{{forloop.counter}}" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}">
+                                <span class="badge">{{forloop.counter}}</span> {{ question.question }}
+                            </button>
+                        </h2>
+                        <div id="collapse-{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="heading-{{forloop.counter}}"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>{{ question.answer }}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                          {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Contact & Footer Start ***** -->
+<footer id="contact">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-12 col-sm-12">
+                    <div class="contact">
+                        <h3 class="section-title">Get In Touch</h3>
+                        <p>For business inquiries, strategic partnerships and collaborations please contact us</p>
+                        <ul class="list">
+                            <li><i class="fa fa-envelope-o"></i><a href="mailto:support@myicosite.com">support@myicosite.com</a>
+                            </li>
+                            <li><i class="fa fa-phone"></i><span>+44 0123 4567</span></li>
+                            <li><i class="fa fa-paper-plane-o"></i><a href="#">Join us on Telegram</a></li>
+                        </ul>
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                            <li><a href="#"><i class="fa fa-github-square"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="offset-lg-1 col-lg-6 col-md-12 col-sm-12">
+                    <div class="contact-form">
+                        <h3 class="section-title">Say Something</h3>
+                        <div class="form-element">
+                            <input type="text" placeholder="Name, surname">
+                        </div>
+                        <div class="form-element">
+                            <input type="email" placeholder="E-Mail">
+                        </div>
+                        <div class="form-element">
+                            <textarea placeholder="Message"></textarea>
+                        </div>
+                        <div class="form-element">
+                            <button class="btn-secondary-box">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ***** Contact & Footer End ***** -->
+
+{% endblock %}

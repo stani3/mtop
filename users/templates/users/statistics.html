@@ -1,0 +1,67 @@
+{% extends "mtop_app/base.html" %}
+{% load bonus_tag %}
+
+{% block content %}
+
+<section class="block-explorer-wrapper bg-bottom-center" id="welcome-1">
+    <div class="block-explorer text">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-12 align-self-center">
+                    <h1>Profile page</h1>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <p><a href="{% url 'statistics' %}">Statistics</a></p>
+            <p><a href="{% url 'affiliate' %}">Affiliate</a></p>
+            <p><a href="{% url 'profile' %}">Edit profile</a></p>
+        </div>
+        <div class="col-sm-8 text-left">
+            <br>
+
+            <br>
+            <h1>Balance history</h1>
+            <br>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Previous balance</th>
+                    <th scope="col">Interest({{ profile.plan.intrest }} %)</th>
+                    <th scope="col">Current balance</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for log in logs%}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ log.date }}</td>
+                    <td>{{ log.prev_balance}}</td>
+                    <td>{% get_profit log.prev_balance log.new_balance profile.plan.intrest %}</td>
+                    <td>{{ log.new_balance }} USDT</td>
+                </tr>
+                {% endfor %}
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

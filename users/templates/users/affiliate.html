@@ -1,0 +1,79 @@
+{% extends "mtop_app/base.html" %}
+{% load bonus_tag %}
+
+{% block content %}
+
+<section class="block-explorer-wrapper bg-bottom-center" id="welcome-1">
+    <div class="block-explorer text">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-12 align-self-center">
+                    <h1>Profile page</h1>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <p><a href="{% url 'statistics' %}">Statistics</a></p>
+            <p><a href="{% url 'affiliate' %}">Affiliate</a></p>
+            <p><a href="{% url 'profile' %}">Edit profile</a></p>
+        </div>
+        <div class="col-sm-8 text-left">
+            <br>
+            <label>Your affiliate link</label>
+            <div class="input-group-prepend">
+                <span class="input-group-text text-center"
+                      id="basic-addon3">https://midas-crypto.com/register/{{ code }}</span>
+            </div>
+            <br>
+            <h1>Your affiliates</h1>
+            <br>
+           <!--- <span>In order to prevent people from exploiting our affiliate system claiming bonuses requires time</span>
+           ------>
+            <br>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Registered on</th>
+                    <th scope="col">Bonus from user</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for usr in ref_users%}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ usr.user.username }}</td>
+                    <td>{{ usr.created }}</td>
+                    <td>{% get_sum usr %} USDT</td>
+                </tr>
+                {% endfor %}
+                <br>
+                <form method="post">
+                     {% csrf_token %}
+                     <div class="button-3">
+                     <input type="submit" value="Claim bonuses">
+                    </div>
+                </form>
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}
